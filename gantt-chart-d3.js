@@ -14,15 +14,15 @@ d3.gantt = function() {
 	left : 150
     };
     var selector = 'body';
-    var timeDomainStart = d3.time.day.offset(new Date(),-3);
-    var timeDomainEnd = d3.time.hour.offset(new Date(),+3);
+    var timeDomainStart = 0;
+    var timeDomainEnd = 10000;
     var timeDomainMode = FIT_TIME_DOMAIN_MODE;// fixed or fit
     var taskTypes = [];
     var taskStatus = [];
     var height = document.body.clientHeight - margin.top - margin.bottom-5;
     var width = document.body.clientWidth - margin.right - margin.left-5;
 
-    var tickFormat = "%H:%M";
+    var tickFormat = "d";
 
     var keyFunction = function(d) {
 	return d.startDate + d.taskName + d.endDate;
@@ -36,7 +36,7 @@ d3.gantt = function() {
 
     var y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
     
-    var xAxis = d3.svg.axis().scale(x).orient("bottom").tickSubdivide(true)
+    var xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.format(tickFormat)).tickSubdivide(true)
 	    .tickSize(8).tickPadding(8);
 
     var yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);
@@ -62,7 +62,7 @@ d3.gantt = function() {
     var initAxis = function() {
 	x = d3.scale.ordinal().domain([ timeDomainStart, timeDomainEnd ]).range([ 0, width ]);
 	y = d3.scale.ordinal().domain(taskTypes).rangeRoundBands([ 0, height - margin.top - margin.bottom ], .1);
-	xAxis = d3.svg.axis().scale(x).orient("bottom").tickSubdivide(true)
+	xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.format(tickFormat)).tickSubdivide(true)
 		.tickSize(8).tickPadding(8);
 
 	yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);

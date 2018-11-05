@@ -8,8 +8,8 @@ function example() {
     var url = new URL(url_string);
     var idx = url.searchParams.get("id");
     var client = url.searchParams.get("client");
-    console.log(client);
-    d3.json("https://storage.googleapis.com/video_extraction/Saxo%20Bank/-KsDmIRJ70o.json", function(error, json) {
+    var json_location = "https://storage.googleapis.com/video_extraction/" + client + "/" + idx + ".json"
+    d3.json(json_location, function(error, json) {
 	if (error)
 	    return console.warn(error);
 	var taskNames = [];

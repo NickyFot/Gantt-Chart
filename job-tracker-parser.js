@@ -54,7 +54,7 @@ function JobTrackerParser() {
 			"taskLink" : DataURL.jobDetailsURL + allTD[0].textContent.trim(),
 			"date" : allTD[5].textContent.trim(),
 			"endDate" : allTD[6].textContent.trim(),
-			"taskName" : allTD[3].textContent.trim(),
+			"taskName" : allTD[3].textContent.trim()
 			"taskStatus" : allTD[4].textContent.trim()
 		    };
 		    tasks.push(task);
@@ -115,9 +115,6 @@ function JobTrackerParser() {
 		date = value;
 		break;
 	    case "Finished At":
-		endDate = value.split('(')[0];
-		break;
-	    case "Finished at":
 		endDate = value.split('(')[0];
 		break;
 	    }

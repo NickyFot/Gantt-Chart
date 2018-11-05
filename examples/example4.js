@@ -4,6 +4,11 @@ function example() {
     var tasks = [];
 
     var taskStatus = {};
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var idx = url.searchParams.get("id");
+    var client = url.searchParams.get("client");
+    console.log(client);
     d3.json("https://storage.googleapis.com/video_extraction/Saxo%20Bank/-KsDmIRJ70o.json", function(error, json) {
 	if (error)
 	    return console.warn(error);

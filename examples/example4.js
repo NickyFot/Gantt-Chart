@@ -36,10 +36,15 @@ function example() {
         {
             taskNames.push(label);
         }
-
+        var end_time = json_shot_annotations[i].segments[j].segment.end_time_offset.seconds;
+        function toDateTime(secs) {
+            var t = new Date(null); // Epoch
+            t.setSeconds(secs);
+            return t;
+        }
 		tasks.push({
-		    "startDate" : start_time,
-		    "endDate" : json_shot_annotations[i].segments[j].segment.end_time_offset.seconds,
+		    "startDate" : toDateTime(start_time),
+		    "endDate" : toDateTime(end_time),
 		    "taskName" : label,
 		    "status" : label
 		});

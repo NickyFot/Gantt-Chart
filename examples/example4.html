@@ -4,11 +4,21 @@
 <title>Gantt Chart External Data Example</title>
 <link type="text/css" href="http://mbostock.github.io/d3/style.css" rel="stylesheet" />
 <link type="text/css" href="example4.css" rel="stylesheet" />
+<script>
+	window.onload = function getUrlVars() {
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var idx = url.searchParams.get("id");
+		console.log(idx);
+		document.getElementById('calendar').src = "https://www.youtube.com/embed/" + idx;
+    }
+</script>
 </head>
 <body>
-	<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/-KsDmIRJ70o" frameborder="0" align="middle" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+	 <iframe id="calendar" width="560" height="315" src="about:blank" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	<script type="text/javascript" src="../lib/d3/d3.v3.min.js"></script>
 	<script type="text/javascript" src="../gantt-chart-d3.js"></script>
 	<script type="text/javascript" src="example4.js"></script>
 </body>
+
 </html>

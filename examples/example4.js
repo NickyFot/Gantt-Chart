@@ -23,12 +23,20 @@ function example() {
 	    {
 	        start_time = json_shot_annotations[i].segments[j].segment.start_time_offset.seconds;
 	    }
+	    else
+	    {
+	        start_time = 0;
+	    }
 //	    console.log(json_shot_annotations[i].segments);
 //		var role = json[i].values[j]["Role"];
 //		var company = json[i].values[j]["Company"];
 //		var roleAndCompany = role + "(" + company + ")";
 //		var name = json[i]["name"];
-		taskNames.push(label);
+        if(!taskNames.includes(label))
+        {
+            taskNames.push(label);
+        }
+
 		tasks.push({
 		    "startDate" : start_time,
 		    "endDate" : json_shot_annotations[i].segments[j].segment.end_time_offset.seconds,
@@ -38,7 +46,8 @@ function example() {
 		taskStatus.name = "bar-blue";
 	    }
 	}
-	var format = "%b-%e-%y";
+	var format = "d";
+	console.log(tasks);
 	var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format);
 	gantt(tasks);
     });
